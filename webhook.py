@@ -25,8 +25,7 @@ def makeResponse(req):
     parameters = result.get("parameters")
     city = parameters.get("geo-city")
     date = parameters.get("date")
-    url = "api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=ed43736919fd647843e9723b61be0e50"
-    r = requests.get(url)
+    r = requests.get("api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=ed43736919fd647843e9723b61be0e50")
     json_object = r.json()
     weather = json_object["list"]
     
@@ -35,7 +34,7 @@ def makeResponse(req):
             condition = weather[i]["weather"][0]["description"]
             break
 
-    speech = city + " için " + date + " tarihinde hava durumu " + condition
+    speech = str(city + " için " + date + " tarihinde hava durumu " + condition)
     return {
     "speech": speech,
     "displayText": speech,
@@ -45,5 +44,5 @@ def makeResponse(req):
 
 if __name__== "__main__":
     port = int(os.getenv("PORT", 5000))
-    print("starting app ont port %d", port)
+    print("Starting app on port %d", port)
     app.run(debug=False, port=port, host="0.0.0.0")
