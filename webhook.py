@@ -32,7 +32,7 @@ def makeResponse(req):
     
     for i in range(0,30):
         if date in weather[i]["dt_txt"]:
-            temperature = str(round(weather[i]["main"]["temp"], 2) - 273.15)
+            temperature = str(round(int(weather[i]["main"]["temp"] - 273.15, 0)))
             condition = weather[i]["weather"][0]["description"]
             break
 
