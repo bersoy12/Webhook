@@ -51,7 +51,7 @@ def makeResponse(req):
         if condition == cond[i]:
             condition = cond_tr[i]
 
-    speech = city + " şehrinde " + date + " tarihinde sıcaklık " + temperature + " derece, " + condition + " bir hava var."
+    speech = city + " şehrinde " + date + " tarihinde hava " + condition + temperature + "derece."
 
     return {
         "fulfillmentText": speech
