@@ -35,12 +35,25 @@ def makeResponse(req):
             condition = weather[i]["weather"][0]["description"]
             break
 
-    speech = city + " şehrinde " + date + " tarihinde hava durumu " + condition
+    cond = ['clear sky', 'few clouds','overcast clouds', 
+            'scattered clouds', 'broken clouds', 
+            'shower rain', 'rain', 'thunderstorm',
+            'snow','mist', "light rain", "moderate rain",
+            "light snow", "snow"]
+    cond_tr = ['güneşli', 'az bulutlu','çok bulutlu', 
+            'bulutlu', 'parçalı bulutlu', 'sağanak yağışlı', 
+            'yağmurlu', 'gök gürültülü sağanak yağışlı', 'karlı', 
+            'sisli', "az yağmurlu", "orta seviye yağmurlu",
+            "az karlı", "karlı"]
+    
+    for i in range(len(condition)):
+        if condition == cond[i]:
+            condition = cond_tr[i]
+
+    speech = city + " şehrinde " + date + " tarihinde " + condition + " bir hava var."
+    
     return {
         "fulfillmentText": speech
-        # "speech": speech,
-        # "displayText": speech,
-        # "source": "Webhook"
     }
 
 
