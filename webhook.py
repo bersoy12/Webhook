@@ -32,7 +32,7 @@ def makeResponse(req):
     
     for i in range(0,30):
         if date in weather[i]["dt_txt"]:
-            temperature = str(int(weather[i]["main"]["temp"]) - 273.15)
+            temperature = str(round(weather[i]["main"]["temp"], 2) - 273.15)
             condition = weather[i]["weather"][0]["description"]
             break
 
@@ -47,7 +47,7 @@ def makeResponse(req):
             'sisli', "az yağmurlu", "orta seviye yağmurlu",
             "az karlı", "karlı"]
     
-    for i in range(len(condition)):
+    for i in range(len(cond)):
         if condition == cond[i]:
             condition = cond_tr[i]
 
