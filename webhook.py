@@ -32,6 +32,7 @@ def makeResponse(req):
     
     for i in range(0,30):
         if date in weather[i]["dt_txt"]:
+            temperature = weather[i]["main"]["temp"] - 273.15
             condition = weather[i]["weather"][0]["description"]
             break
 
@@ -50,8 +51,8 @@ def makeResponse(req):
         if condition == cond[i]:
             condition = cond_tr[i]
 
-    speech = city + " şehrinde " + date + " tarihinde " + condition + " bir hava var."
-    
+    speech = city + " şehrinde " + date + " tarihinde sıcaklık " + temperature + " derece, " + condition + " bir hava var."
+
     return {
         "fulfillmentText": speech
     }
