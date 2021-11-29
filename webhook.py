@@ -25,6 +25,9 @@ def makeResponse(req):
     parameters = result.get("parameters")
     city = parameters.get("city")
     date = parameters.get("date")[:10]
+    if date == None:
+        return { "fulfillmentText": "Belirtilen tarihte hava durumu bulanamadı."}
+
     url_ = f'http://api.openweathermap.org/data/2.5/forecast?q={city}&appid={api_key}'
     r = requests.get(url_)
     json_object = r.json()
