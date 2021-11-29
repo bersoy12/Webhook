@@ -25,7 +25,7 @@ def makeResponse(req):
     parameters = result.get("parameters")
     city = parameters.get("city")
     date = parameters.get("date")[:10]
-    url_ = str('http://api.openweathermap.org/data/2.5/forecast?q=' + str(city) + '&appid=' + str(api_key))
+    url_ = f'http://api.openweathermap.org/data/2.5/forecast?q={city}&appid={api_key}'
     r = requests.get(url_)
     json_object = r.json()
     weather = json_object["list"]
